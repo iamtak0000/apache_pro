@@ -29,7 +29,7 @@ $ make && make install
 
 ## Apache Compile
 $ cd /home/apache/httpd-2.4.37
-$ ./configure --prefix=/home/apache/apache2 --enable-mpms-shared=all --enable-ssl --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
+$ ./configure --prefix=/home/apache/apache2 --enable-mpms-shared=all --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
 $ make && make install
 
 ## 설치 확인하는 방법
