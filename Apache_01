@@ -3,7 +3,7 @@
 이 과정은 아파치 기본 모듈 설치 후 필요로 하는 모듈만 별도로 사용하는 것을 고려해서 작성되었습니다(일반 계정).
 
 <root>
-$ yum install -y gcc make gcc-c++ pcre-devel expat-devel wget
+$ yum install -y gcc make gcc-c++ pcre-devel expat-devel openssl-devel wget
 
 <apache user>
 $ wget http://apache.tt.co.kr//httpd/httpd-2.4.37.tar.gz
@@ -29,7 +29,7 @@ $ make && make install
 
 ## Apache Compile
 $ cd /home/apache/httpd-2.4.37
-$ ./configure --prefix=/home/apache/apache2 --enable-mpms-shared=all --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
+$ ./configure --prefix=/home/apache/apache2 --enable-ssl --enable-so --enable-mpms-shared=all --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
 $ make && make install
 
 ## 설치 확인하는 방법
