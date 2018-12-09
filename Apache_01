@@ -27,75 +27,13 @@ $ mkdir /home/apache/pcre
 $ ./configure --prefix=/home/apache/pcre --enable-jit
 $ make && make install
 
-## Apache Compile : with-mpm=
+## Apache Compile
 $ cd /home/apache/httpd-2.4.37
 $ ./configure --prefix=/home/apache/apache2 --enable-mpms-shared=all --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
 $ make && make install
 
-## apache2.2
-# prefork
-$ ./configure --prefix=/home/apache/apache2 --with-mpm=prefork --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
-# worker
-$ ./configure --prefix=/home/apache/apache2 --with-mpm=worker --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
-
-
 ## 설치 확인하는 방법
-$ [apache@localhost bin]$ ./apachectl -V
-Server version: Apache/2.4.37 (Unix)
-Server built:   Dec  9 2018 22:32:39
-Server's Module Magic Number: 20120211:83
-Server loaded:  APR 1.6.5, APR-UTIL 1.6.1
-Compiled using: APR 1.6.5, APR-UTIL 1.6.1
-Architecture:   64-bit
-Server MPM:     prefork
-  threaded:     no
-    forked:     yes (variable process count)
-Server compiled with....
- -D APR_HAS_SENDFILE
- -D APR_HAS_MMAP
- -D APR_HAVE_IPV6 (IPv4-mapped addresses enabled)
- -D APR_USE_SYSVSEM_SERIALIZE
- -D APR_USE_PTHREAD_SERIALIZE
- -D SINGLE_LISTEN_UNSERIALIZED_ACCEPT
- -D APR_HAS_OTHER_CHILD
- -D AP_HAVE_RELIABLE_PIPED_LOGS
- -D DYNAMIC_MODULE_LIMIT=256
- -D HTTPD_ROOT="/home/apache/apache2"
- -D SUEXEC_BIN="/home/apache/apache2/bin/suexec"
- -D DEFAULT_PIDLOG="logs/httpd.pid"
- -D DEFAULT_SCOREBOARD="logs/apache_runtime_status"
- -D DEFAULT_ERRORLOG="logs/error_log"
- -D AP_TYPES_CONFIG_FILE="conf/mime.types"
- -D SERVER_CONFIG_FILE="conf/httpd.conf"
+$ apachectl -V
 
 ## 모듈 확인하는 방법
 $ apachectl -M
-AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using localhost.localdomain. Set the 'ServerName' directive globally to suppress this message
-Loaded Modules:
- core_module (static)
- so_module (static)
- http_module (static)
- mpm_prefork_module (static)
- authn_file_module (shared)
- authn_core_module (shared)
- authz_host_module (shared)
- authz_groupfile_module (shared)
- authz_user_module (shared)
- authz_core_module (shared)
- access_compat_module (shared)
- auth_basic_module (shared)
- reqtimeout_module (shared)
- filter_module (shared)
- mime_module (shared)
- log_config_module (shared)
- env_module (shared)
- headers_module (shared)
- setenvif_module (shared)
- version_module (shared)
- unixd_module (shared)
- status_module (shared)
- autoindex_module (shared)
- dir_module (shared)
- alias_module (shared)
-
-** AH00558 메시지는 ServerName을 정의하면 없어짐.
