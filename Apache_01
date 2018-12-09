@@ -29,13 +29,15 @@ $ make && make install
 
 ## Apache Compile : with-mpm=
 $ cd /home/apache/httpd-2.4.37
-or event(default)
-$ ./configure --prefix=/home/apache/apache2 --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
-or prefork
-$ ./configure --prefix=/home/apache/apache2 --with-mpm=prefork --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
-or worker
-$ ./configure --prefix=/home/apache/apache2 --with-mpm=worker --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
+$ ./configure --prefix=/home/apache/apache2 --enable-mpms-shared=all --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
 $ make && make install
+
+## apache2.2
+# prefork
+$ ./configure --prefix=/home/apache/apache2 --with-mpm=prefork --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
+# worker
+$ ./configure --prefix=/home/apache/apache2 --with-mpm=worker --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
+
 
 ## 설치 확인하는 방법
 $ [apache@localhost bin]$ ./apachectl -V
