@@ -1,0 +1,26 @@
+Apache ab
+
+Apache가 설치 시 포함되나, 별도로 설치 시에는 
+
+yum install httpd-tools
+
+AB(Apache HTTP server benchmarking tool)는 커맨드 라인을 활용한 매우 가볍고 유용한 웹서버 벤치마킹 도구 이다.
+간단한 REST API나 정적 컨텐츠에 대한 성능 테스트 시에 빠르고 간편하게 벤치마킹 정보를 얻어올 수 있다.
+
+$ ab
+Usage: ab [options] [http[s]://]hostname[:port]/path  
+
+n : 성능을 검사하기위해 보내는 요청수.
+c : 동시에 요청하는 요청수.
+
+테스트 결과 
+
+Time per request: 0.139 [ms] (mean, across all concurrent requests) = 1000/Request per second
+Time per request: 1.390 [ms] (mean) = 1000/Request per second * Concurrency Level
+Time taken for tests = 1000/Request per second * Complete requests
+Transfer rate = Total transferred / Time taken for tests / 1024
+
+
+참고 URL
+http://blog.hkwon.me/ab-apache-http-server-benchmarking-tool/
+http://eastluck.tistory.com/31
