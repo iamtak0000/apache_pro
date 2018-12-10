@@ -5,3 +5,5 @@ alias wstart='/home/apache/apache2/bin/apachectl -k start'
 alias wstop='/home/apache/apache2/bin/apachectl -k stop'
 alias alog='cd /home/apache/apache2/logs'
 alias acgf='cd /home/apache/apache2/conf'
+
+$ source ~/.bash_profile
