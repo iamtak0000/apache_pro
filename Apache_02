@@ -1,0 +1,40 @@
+아파치 설정
+
+# PATH 설정
+$ cd
+$ vi .bash_profile
+PATH=$PATH:$HOME/.local/bin:$HOME/bin --> PATH=/home/apache/apache2/bin:$PATH:$HOME/.local/bin:$HOME/bin
+
+$ source ~/.bash_profile
+$ echo $PATH
+
+# Apache 80포트 사용
+$ su -
+$ cd /home/apache/apache24/bin
+$ chown root httpd
+$ chmod +s httpd
+$ cd /home
+$ chmod 711 apache
+
+# ServerName 설정
+$ cd /home/apache/apache2/conf
+$ vi httpd.conf
+
+#ServerName www.example.com:80
+ServerName 127.0.0.1:80
+
+아파치 실행/종료/확인
+$ apachectl -k start
+
+# 로그 확인(error)
+$ vi /home/apache/apache2/logs/error_log
+[Mon Dec 10 12:31:56.811982 2018] [mpm_event:notice] [pid 9659:tid 140579977869120] AH00489: Apache/2.4.37 (Unix) configured -- resuming normal operations
+[Mon Dec 10 12:31:56.812482 2018] [core:notice] [pid 9659:tid 140579977869120] AH00094: Command line: '/home/apache/apache2/bin/httpd'
+
+# URL 호출
+$ curl http://127.0.0.1/
+<html><body><h1>It works!</h1></body></html>
+
+# 로그 확인(access)
+$ vi /home/apache/apache2/logs/access_log
+127.0.0.1 - - [10/Dec/2018:12:44:32 +0900] "GET / HTTP/1.1" 200 45
