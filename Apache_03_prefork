@@ -19,8 +19,8 @@ Server MPM:     prefork
 # apache 재기동
 $ apachectl -k restart
 
-# prefork process 확인(MaxRequestWorkers)
-$ ps aux | grep httpd | wc -l
+# prefork process 확인(StartServers,MaxRequestWorkers)
+$ ps aux | grep httpd | grep daemon | wc -l
 
 # 현재 연결되어 있는 Session(MaxConnectionsPerChild)
 # netstat -na |grep :80.*ESTABLISHED | wc -l
