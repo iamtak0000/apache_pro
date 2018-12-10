@@ -1,0 +1,7 @@
+linux alias 설정을 하여 사용 가독성을 높힌다.
+
+$ vi .bas_profile
+alias wstart='/home/apache/apache2/bin/apachectl -k start'
+alias wstop='/home/apache/apache2/bin/apachectl -k stop'
+alias alog='cd /home/apache/apache2/logs'
+alias acgf='cd /home/apache/apache2/conf'
