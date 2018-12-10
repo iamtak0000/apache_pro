@@ -20,11 +20,11 @@ Server MPM:     worker
 # apache 재기동
 $ apachectl -k restart
 
-# work process 확인(StartServers,MaxRequestWorkers)
-$ ps aux | grep httpd | grep daemon | wc -l
+# work thread 확인(Process * ThreadsPerChild >= MinSpareThreads)
+# ps -efL | grep httpd | grep -v grep | grep daemon | wc -l
 
-# 현재 연결되어 있는 Session(MaxConnectionsPerChild)
-# netstat -na |grep :80.*ESTABLISHED | wc -l
+# work process 확인(Process * ThreadsPerChild >= MinSpareThreads)
+$ ps aux | grep httpd | grep daemon | wc -l
 
 # 아파치 메모리 사용량 측정
 # 전체 메모리 사용량을 아파치 프로세스 개수로 나누어 계산
