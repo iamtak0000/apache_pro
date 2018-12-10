@@ -1,0 +1,33 @@
+Apache MPM 변경
+
+# 현재 MPM를 확인
+$ apachectl -V | grep MPM
+Server MPM:     event                                          **apache2.4 Default가 event
+
+# prefork MPM로 변경
+$ vi /home/apache/apache2/conf/httpd.conf
+
+#LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+
+Include conf/extra/httpd-mpm.conf
+
+# prefork MPM로 변경 확인
+$ apachectl -V | grep MPM
+Server MPM:     prefork
+
+# apache 재기동
+$ apachectl -k restart
+
+# prefork process 확인(MaxRequestWorkers)
+$ ps aux | grep httpd | wc -l
+
+# 현재 연결되어 있는 Session(MaxConnectionsPerChild)
+# netstat -na |grep :80.*ESTABLISHED | wc -l
+
+# 아파치 메모리 사용량 측정
+# 전체 메모리 사용량을 아파치 프로세스 개수로 나누어 계산
+$ ps aux | grep apache | awk '{print $6}' | awk '{total = total + $1 } END {print total/1024}'
+
+# 아파치 CPU 사용량 측정
+$ top -u daemon
