@@ -33,7 +33,7 @@ $ ./configure --prefix=/home/apache/apache2 --enable-ssl --enable-so --enable-mp
 $ make && make install
 
 ## 설치 확인하는 방법
-$ apachectl -V
+$ /home/apache/apache2/bin/apachectl -V
 
 ## 모듈 확인하는 방법
-$ apachectl -M
+$ /home/apache/apache2/bin/apachectl -M
