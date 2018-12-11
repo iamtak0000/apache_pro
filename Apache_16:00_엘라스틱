@@ -4,3 +4,60 @@
 
 먼저 Elasticsearch, Kibana, Beats를 다운 받는다(간단한 수집 테스트임으로 Logstash은 일단 제외한다)
 
+$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.2.tar.gz
+$ wget https://artifacts.elastic.co/downloads/kibana/kibana-6.5.2-linux-x86_64.tar.gz
+
+## Elasticsearch는 처음부터 OS 자원에 대해서 요청 합니다. 그래서 사전에 먼저 튜닝을 하는 것이 좋아요.
+
+$ ulimit -Sa
+#첫번째 설정
+vi /etc/security/limits.conf
+
+ela hard nofile 65536 # ela는 하드세팅(해당 쉘 최대값) 으로 한 번 접속할때 65536번의 파일을 열어 볼 수 있습니다.
+ela sort nofile 65536 # ela는 소프트세팅(해당 설정 값) 으로 한 번 접속할때 65536번의 파일을 열어 볼 수 있습니다.
+ela hard nproc 65536 # ela는 하드세팅으로 한 번 접속할때 65536번의 프로시저를 실행 할 수 있습니다. 
+ela sort nproc 65536 # ela는 소프트세팅으로 한 번 접속할때 65536번의 프로시저를 실행 할 수 있습니다.
+
+# 두번째 설정
+vi /etc/rc.local
+cho 1048575 > /proc/sys/vm/max_map_count # 특정 프로세스가 소유할 수 있는 가상 메모리 영역 설정
+
+# 세번째 설정
+/usr/sbin/sysctl -w vm.max_map_count=262144
+
+# 재기동
+sudo reboot 0 # 지금 당장 다시시작 해라 명령어
+
+## Elasticsearch 설정
+$ vi /etc/elasticsearch/elasticsearch.yml
+
+network.host: 0.0.0.0
+
+# 설치 및 기동 확인
+http://192.168.123.123:9200/
+
+#키바나 설치
+키바나는 설치 후 그냥 실행한다.
+
+# filebeat 다운로드(아파치 계정)
+wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.2-linux-x86_64.tar.gz
+tar xzvf filebeat-6.5.2-linux-x86_64.tar.gz
+cd filebeat-6.5.2-linux-x86_64/
+
+# Modify filebeat.yml to set the connection information:
+
+output.elasticsearch:
+  hosts: ["<es_url>"]
+  username: "elastic"
+  password: "<password>"
+
+./filebeat modules enable apache2
+
+# 로그 경로를 변경한다.
+/home/apache/filebeat-6.5.2-linux-x86_64/modules.d/apache2.yml
+/home/apache/filebeat-6.5.2-linux-x86_64/filebeat.yml멤
+
+filebeat -e --module apache2 -M "apache2.access.var.paths=[/home/apache/apache2/logs/apache.logs*]"
+
+참고 URL
+http://kimjmin.net/2018/01/2018-01-build-es-cluster-2/
