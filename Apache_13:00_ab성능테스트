@@ -22,7 +22,7 @@ Transfer rate = Total transferred / Time taken for tests / 1024
 
 
 ** 테스트 목표는 아래와 같다.
-ab -n 20000 -c 1000 http://localhost/
+ab -n 5000 -c 400 http://localhost/
 
 참고 URL
 http://blog.hkwon.me/ab-apache-http-server-benchmarking-tool/
