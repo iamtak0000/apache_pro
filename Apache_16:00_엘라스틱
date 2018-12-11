@@ -1,0 +1,6 @@
+엘라스틱 스텍은 루신 기반의 검색 엔진으로, Elasticsearch, Logstash, Kibana, Beats를 기반으로 하고 있으며
+
+이 과정은 Elasticsearch를 이용하여, 아파치 로그를 수집, 시각화하는 것을 한다.
+
+먼저 Elasticsearch, Kibana, Beats를 다운 받는다(간단한 수집 테스트임으로 Logstash은 일단 제외한다)
+
