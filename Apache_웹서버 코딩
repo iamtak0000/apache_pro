@@ -433,3 +433,29 @@ $ make single-thread-http-server
 $ ls -la -IMake* -I*.c -I*.h
 simple-http-server
 single-thread-http-server
+
+
+## simple 서버 기동 및 테스트
+$ ./simple-http-server
+listening... 8080
+
+## 접속 시 출력하고 close
+RECV: GET / HTTP/1.1
+User-Agent: curl/7.29.0
+Host: localhost:8080
+Accept: */*
+
+## 다른 창에서 접속
+$ curl http://localhost:8080
+Hello
+
+## single-thread-http-server 서버 기동 및 테스트(## Ctrl + C로 종료)
+$./single-thread-http-server
+listening... 8080
+
+## 다른 창에서 접속
+$ curl http://localhost:8080
+<h1>Your Request Information</h1><p>You IP Address: 127.0.0.1:36414</p><ul><li>Method: GET</li><li>Path: /</li><li>Protocol: HTTP/1.1</li></ul>
+
+## 우리가 설치하고 테스트를 해볼려고 하는 아파치는 그저 C언어로 만든 웹서버 입니다.
+https://github.com/apache/httpd
