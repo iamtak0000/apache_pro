@@ -1,0 +1,24 @@
+Goaccess : 실시간 웹 로그 분석기로
+
+access.log를 분석함에 있어서 먼저 로그를 하나의 파일로 하기에는 어려움이 있어, cronolog을 먼저 설치한다.
+
+Apache에서 제공하는 rototagelogs는 실행 후를 시작하여 주기로 로그를 적제함으로 날짜별로는 하기 어렵다.
+
+wget https://fossies.org/linux/www/old/cronolog-1.6.2.tar.gz
+
+tar zxvf cronolog-1.6.2.tar.gz
+cd cronolog-1.6.2
+
+./configure --prefix=/home/apache/cronlog
+make && make install
+
+# access, error 설정
+CustomLog "|/home/apache/cronlog/sbin/cronolog /home/apache/apache2/logs/access.log.%Y%m%d" combined
+ErrorLog "|/home/apache/cronlog/sbin /home/apache/apache2/logs/error.log.%Y%m%d"
+
+
+#HTML로 축출
+./goaccess -f /home/apache/apache2/logs/access.log.20181212 -o /home/apache/apache2/htdocs/goaccess.html --log-format=COMMON
+
+#HTML로 실시간
+./goaccess -f /home/apache/apache2/logs/access.log.20181212 -o /home/apache/apache2/htdocs/goaccess.html --log-format=COMMON --real-time-html
