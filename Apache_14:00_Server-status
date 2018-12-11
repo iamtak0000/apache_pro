@@ -1,0 +1,51 @@
+SERVER_STATUS 설치와 모니터링
+
+## 설정을 해제한다(기본으로 같이 설치가 된다).
+$ vi /home/apache/apache2/conf/httpd.conf
+
+Include conf/extra/httpd-info.conf
+
+# server-status IP 로 접근 제한 설정을 반영한다.
+$ vi /home/apache/apache2/conf/extra/httpd-info.conf
+
+<Location /server-status>
+	SetHandler server-status
+	Order deny,allow
+	Deny from all
+	Allow from 222.106.59.0/24
+</Location>
+
+$ /home/apache/apache2/bin/apachectl -k restart
+
+## url 테스트를 한다.
+http://localhost/server-status
+
+## refresh 테스트를 한다(refresh=2 : 2초)
+http://192.168.123.123/server-status?refresh=2
+
+## 아이디/비밀번호로 제한
+<Location /server-status>
+	SetHandler server-status
+	AuthType Basic
+	AuthName "Restricted Files"
+	AuthUserFile /home/apache/passwd/passwords
+	Require user tester
+</Location>
+
+$ mkdir /home/apache/passwd
+$ /home/apache/apache2/bin/htpasswd -c /home/apache/passwd/passwords tester
+
+## 사용자별 비밀번호	파일 생성
+<Location /server-status>
+	SetHandler server-status
+	AuthType Basic
+	AuthName "Restricted Files"
+	AuthUserFile /home/apache/passwd/passwords
+	AuthGroupFile /home/apache/passwd/groups
+	Require group admin
+</Location>
+
+$ /home/apache/apache2/bin/htpasswd -c /home/apache/passwd/passwords tester2
+$ vi /home/apache/passwd/groups	
+admin : tester tester2	
+
