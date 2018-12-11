@@ -27,6 +27,16 @@ $ mkdir /home/apache/pcre
 $ ./configure --prefix=/home/apache/pcre --enable-jit
 $ make && make install
 
+
+## 컴파일 전에 ServerLimit을 변경한다.
+$ /home/apache/httpd-2.4.37/server/mpm/event/event.c
+#define DEFAULT_SERVER_LIMIT 64
+$ /home/apache/httpd-2.4.37/server/mpm/worker/worker.c
+#define DEFAULT_SERVER_LIMIT 64
+$ /home/apache/httpd-2.4.37/server/mpm/prefork/prefork.c
+#define DEFAULT_SERVER_LIMIT 1024
+
+
 ## Apache Compile
 $ cd /home/apache/httpd-2.4.37
 $ ./configure --prefix=/home/apache/apache2 --enable-ssl --enable-so --enable-mpms-shared=all --with-pcre=/home/apache/pcre --with-included-apr -with-zlib
