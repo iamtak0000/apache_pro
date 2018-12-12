@@ -9,7 +9,7 @@ $ tar -xzvf goaccess-1.2.tar.gz
 $ cd goaccess-1.2
 $ ./configure -prefix=/home/apache/goaccess -enable-utf8
 $ make && make install
-$ ./goaccess /home/apache/apache24/logs/access_log
+$ ./goaccess /home/apache/apache2/logs/access_log
 
 
 
