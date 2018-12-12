@@ -11,9 +11,9 @@ $ echo $PATH
 # Apache 80포트 사용
 $ su -
 $ cd /home/apache/apache24/bin
+$ chown root httpd
 $ chmod +s httpd
-$ cd /home
-$ chmod 711 apache
+
 
 # ServerName 설정
 $ cd /home/apache/apache2/conf
