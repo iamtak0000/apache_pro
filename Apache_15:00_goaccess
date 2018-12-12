@@ -11,6 +11,9 @@ $ ./configure -prefix=/home/apache/goaccess -enable-utf8
 $ make && make install
 $ ./goaccess /home/apache/apache2/logs/access_log
 
+$./goaccess -f /home/apache/apache2/logs/access_log -o /home/apache/apache2/htdocs/goaccess.html --log-format=COMMON
+
+
 
 
 
