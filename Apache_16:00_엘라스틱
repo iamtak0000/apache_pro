@@ -49,7 +49,7 @@ cho 1048575 > /proc/sys/vm/max_map_count # 특정 프로세스가 소유할 수 
 sudo reboot 0 # 지금 당장 다시시작 해라 명령어
 
 ## Elasticsearch 설정
-$ vi /etc/elasticsearch/elasticsearch.yml
+$ vi /home/ela/elasticsearch-6.5.2/config/elasticsearch.yml
 
 network.host: 0.0.0.0
 
