@@ -1,5 +1,34 @@
 Goaccess : 실시간 웹 로그 분석기로
 
+[root]
+yum install gcc ncurses ncurses-devel
+
+[apache]
+$ wget http://tar.goaccess.io/goaccess-1.2.tar.gz
+$ tar -xzvf goaccess-1.2.tar.gz
+$ cd goaccess-1.2
+$ ./configure -prefix=/home/apache/goaccess -enable-utf8
+$ make && make install
+$ ./goaccess /home/apache/apache24/logs/access_log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+============================================================================================
+
 access.log를 분석함에 있어서 먼저 로그를 하나의 파일로 하기에는 어려움이 있어, cronolog을 먼저 설치한다.
 
 Apache에서 제공하는 rototagelogs는 실행 후를 시작하여 주기로 로그를 적제함으로 날짜별로는 하기 어렵다.
