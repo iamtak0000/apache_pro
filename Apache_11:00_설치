@@ -9,8 +9,7 @@ $ yum install -y gcc make gcc-c++ pcre-devel expat-devel openssl-devel wget
 $ wget http://apache.tt.co.kr//httpd/httpd-2.4.37.tar.gz
 $ wget http://mirror.navercorp.com/apache//apr/apr-util-1.6.1.tar.gz
 $ wget http://apache.tt.co.kr//apr/apr-1.6.5.tar.gz
-$ wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.42.tar.gz
-$ wget https://ko.osdn.net/projects/sfnet_pcre/downloads/pcre/8.42/pcre-8.42.tar.gz
+$ wget https://ftp.pcre.org/pub/pcre/pcre-8.42.tar.gz
 
 ## 압축풀기
 $ tar xvfz httpd-2.4.37.tar.gz
