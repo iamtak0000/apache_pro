@@ -53,7 +53,7 @@ $ vi /home/ela/elasticsearch-6.5.2/config/elasticsearch.yml
 
 network.host: 0.0.0.0
 
-# 기동 기동 확인
+# 기동
 /home/ela/elasticsearch-6.5.2/bin/elasticsearch
 
 # 기동 확인
