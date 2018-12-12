@@ -13,6 +13,9 @@ $ ./goaccess /home/apache/apache2/logs/access_log
 
 $./goaccess -f /home/apache/apache2/logs/access_log -o /home/apache/apache2/htdocs/goaccess.html --log-format=COMMON
 
+$./goaccess -f /home/apache/apache2/logs/access_log -o /home/apache/apache2/htdocs/goaccess.html --log-format=COMMON --real-time-html
+
+
 
 
 
