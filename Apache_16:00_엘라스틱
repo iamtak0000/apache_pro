@@ -1,3 +1,23 @@
+일반적으로 root에 설치하고 일반 계정에서 사용할 수 있도록 한다.
+
+yum list java*jdk-devel
+
+yum install java-1.8.0-openjdk-devel.x86_64
+
+[root@localhost ~]# javac -version
+javac 1.8.0_161
+
+[root@localhost ~]# which java
+/usr/bin/java
+[root@localhost ~]# readlink -f /usr/bin/java
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64/bin/java
+
+
+JAVA_HOME 설정(일)
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64
+
+
 엘라스틱 스텍은 루신 기반의 검색 엔진으로, Elasticsearch, Logstash, Kibana, Beats를 기반으로 하고 있으며
 
 이 과정은 Elasticsearch를 이용하여, 아파치 로그를 수집, 시각화하는 것을 한다.
