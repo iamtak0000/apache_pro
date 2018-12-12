@@ -59,7 +59,7 @@ http://192.168.123.123:9200/
 #키바나 설치
 $ vi /home/ela/kibana-6.5.2-linux-x86_64/config/kibana.yml
 server.host: "10.250.172.235"
-
+& /home/ela/kibana-6.5.2-linux-x86_64/bin/kibana
 
 # filebeat 다운로드(아파치 계정)
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.2-linux-x86_64.tar.gz
