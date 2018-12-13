@@ -67,6 +67,12 @@ server.host: "10.250.172.235"
 # kibana 실행
 http://10.250.172.235:5601
 
+
+## filebeat완 연동하기 위해서 (elasticsearch)
+bin/elasticsearch-plugin install ingest-geoip
+bin/elasticsearch-plugin install ingest-user-agent
+
+
 # filebeat 다운로드(아파치 계정)
 wget https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.2-linux-x86_64.tar.gz
 tar xzvf filebeat-6.5.2-linux-x86_64.tar.gz
